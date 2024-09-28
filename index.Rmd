@@ -11,7 +11,5 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to:
-* Basketball/Football 
-* Television 
-* Pop Culture 
+I am interested in exploring data related to Basketball, Football, Pop Culture, 
+and Television. 
