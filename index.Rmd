@@ -13,4 +13,4 @@ output:
 
 I am interested in exploring data related to Basketball, Football, Pop Culture, 
 and Television. Specifically, looking popular trends within each of these fields, 
-and what the impact of those trends are on consumers.
+and what the impact of those trends are on those who consume it. 
