@@ -16,4 +16,35 @@ and Television. Specifically, looking popular trends within each of these fields
 and what the impact of those trends are on those who consume it. 
 
 ## Research Question 
-Does the the dissemination of humanitarian aid impact the class of ceasefire administered? I plan to examine how the delivery of life-saving or relief-distribution aid impacts the depth of a ceasefire, which ranges from the cessation of hostilities to a definitive ceasefire. I hypothesize that, if humanitarian aid is the reason behind the call for a ceasefire, then the class of ceasefire would be one that demands the cessation of hostilities with compliance mechanism(s). During times of heightened conflict, I would imagine that it is in the best interest of most, if not all, the parties at-odds to ensure that their respective communities are safe and taken care of—which is why the distribution of humanitarian aid so important. However, because a socio-political tension has the ability to physically tear communities apart, I would not be surprised if even the spread of life saving resources weren't enough to demand a definitive ceasefire for all the parties involved. My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as  =2, then there may be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. If I observe greater ceasefires, associated with the cessation of hostilities with compliance mechanism(s), that are linked to ceasefires with the purpose of humanitarian aid—then my hypothesis would be supported. However, if there more definitive ceasefires linked to humanitarianism, then that would provide evidence against my hypothesis. 
+Does the the dissemination of humanitarian aid impact the class of ceasefire administered? I plan to examine how the delivery of life-saving or relief-distribution aid impacts the depth of a ceasefire, which ranges from the cessation of hostilities to a definitive ceasefire. I hypothesize that, if humanitarian aid is the reason behind the call for a ceasefire, then the class of ceasefire would be one that demands the cessation of hostilities with compliance mechanism(s). During times of heightened conflict, I would imagine that it is in the best interest of most, if not all, the parties at-odds to ensure that their respective communities are safe and taken care of—which is why the distribution of humanitarian aid so important. However, because a socio-political tension has the ability to physically tear communities apart, I would not be surprised if even the spread of life saving resources weren't enough to demand a definitive ceasefire for all the parties involved. My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for ceasefires without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as =2, then there might be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. If I observe greater ceasefires, associated with the cessation of hostilities with compliance mechanism(s), that are linked to ceasefires with the purpose of humanitarian aid—then my hypothesis would be supported. However, if there more definitive ceasefires linked to humanitarianism, then that would provide evidence against my hypothesis. 
+
+## Data Visualization 
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+ceasefire <- read_csv("data/CFD.csv")
+```
+
+```{r}
+humanitarian_purpose <- ceasefire |> 
+  filter (p_humanitarian == 1)
+
+humanitarian_purpose
+```
+
+
+```{r}
+ggplot(humanitarian_purpose, aes(x = ceasefire_class)) +
+  geom_bar(fill = "darkgreen") +
+  labs(x = "Ceasefire Class",
+       y = "Count",
+       title = "Ceasefires with a Humanitarian Purpose vs. Ceasefire Classification") 
+```
+
+This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with "cessation of hostilities". A ceasefire class of 2 represents a ceasefire with "cessation of hostilities with compliance mechanism(s)". A ceasefire class of 3 represents a "definitive ceasefire".This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires, with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. 
+
+
+

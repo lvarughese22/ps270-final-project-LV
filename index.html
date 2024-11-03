@@ -32,7 +32,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.28/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["data/CFD.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.28/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1548,8 +1548,58 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 and Television. Specifically, looking popular trends within each of these fields,
 and what the impact of those trends are on those who consume it.</p>
 <h2 id="research-question">Research Question</h2>
-<p>Does the the dissemination of humanitarian aid impact the class of ceasefire administered? I plan to examine how the delivery of life-saving or relief-distribution aid impacts the depth of a ceasefire, which ranges from the cessation of hostilities to a definitive ceasefire. I hypothesize that, if humanitarian aid is the reason behind the call for a ceasefire, then the class of ceasefire would be one that demands the cessation of hostilities with compliance mechanism(s). During times of heightened conflict, I would imagine that it is in the best interest of most, if not all, the parties at-odds to ensure that their respective communities are safe and taken care of—which is why the distribution of humanitarian aid so important. However, because a socio-political tension has the ability to physically tear communities apart, I would not be surprised if even the spread of life saving resources weren’t enough to demand a definitive ceasefire for all the parties involved. My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as =2, then there may be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. If I observe greater ceasefires, associated with the cessation of hostilities with compliance mechanism(s), that are linked to ceasefires with the purpose of humanitarian aid—then my hypothesis would be supported. However, if there more definitive ceasefires linked to humanitarianism, then that would provide evidence against my hypothesis.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Does the the dissemination of humanitarian aid impact the class of ceasefire administered? I plan to examine how the delivery of life-saving or relief-distribution aid impacts the depth of a ceasefire, which ranges from the cessation of hostilities to a definitive ceasefire. I hypothesize that, if humanitarian aid is the reason behind the call for a ceasefire, then the class of ceasefire would be one that demands the cessation of hostilities with compliance mechanism(s). During times of heightened conflict, I would imagine that it is in the best interest of most, if not all, the parties at-odds to ensure that their respective communities are safe and taken care of—which is why the distribution of humanitarian aid so important. However, because a socio-political tension has the ability to physically tear communities apart, I would not be surprised if even the spread of life saving resources weren’t enough to demand a definitive ceasefire for all the parties involved. My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for ceasefires without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as =2, then there might be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. If I observe greater ceasefires, associated with the cessation of hostilities with compliance mechanism(s), that are linked to ceasefires with the purpose of humanitarian aid—then my hypothesis would be supported. However, if there more definitive ceasefires linked to humanitarianism, then that would provide evidence against my hypothesis.</p>
+<h2 id="data-visualization">Data Visualization</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ceasefire</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"data/CFD.csv"</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>humanitarian_purpose</span> <span class='op'>&lt;-</span> <span class='va'>ceasefire</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span> <span class='op'>(</span><span class='va'>p_humanitarian</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>humanitarian_purpose</span></span></code></pre>
+</div>
+<pre><code># A tibble: 847 × 87
+      cc cf_id uniq_id location  region  link ucdp_actor_id actor_name
+   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;     
+ 1    70     1   70001 Mexico         5     0            10 Governmen…
+ 2    92     4   92004 El Salva…      5     0           755 FMLN      
+ 3    92     7   92007 El Salva…      5     0           755 FMLN      
+ 4    92    16   92016 El Salva…      5     0           755 FMLN      
+ 5    93    16   93016 Nicaragua      5     0          5803 Recontra  
+ 6   100     9  100009 Colombia       5     0           744 ELN       
+ 7   100     9  100009 Colombia       5     0            17 Governmen…
+ 8   100    33  100033 Colombia       5     0           744 ELN       
+ 9   343     3  343003 Macedonia      1     0            47 Governmen…
+10   343     4  343004 Macedonia      1     0            47 Governmen…
+# ℹ 837 more rows
+# ℹ 79 more variables: ucdp_acd_id &lt;dbl&gt;, ucdp_dyad &lt;dbl&gt;,
+#   pax_id &lt;dbl&gt;, cf_dec_yr &lt;dbl&gt;, cf_dec_month &lt;dbl&gt;,
+#   cf_dec_day &lt;dbl&gt;, cf_effect_yr &lt;dbl&gt;, cf_effect_month &lt;dbl&gt;,
+#   cf_effect_day &lt;dbl&gt;, evidence_onset &lt;lgl&gt;, side &lt;dbl&gt;,
+#   partial &lt;dbl&gt;, written &lt;dbl&gt;, fixed &lt;dbl&gt;, fixed_time &lt;chr&gt;,
+#   nsa_frac &lt;dbl&gt;, p_humanitarian &lt;dbl&gt;, p_peaceprocess &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>humanitarian_purpose</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ceasefire_class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"darkgreen"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Ceasefire Class"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Count"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"Ceasefires with a Humanitarian Purpose vs. Ceasefire Classification"</span><span class='op'>)</span> </span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with “cessation of hostilities”. A ceasefire class of 2 represents a ceasefire with “cessation of hostilities with compliance mechanism(s)”. A ceasefire class of 3 represents a “definitive ceasefire”.This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires, with a class of 2 called with a humanitarian purpose, but I was clearly mistaken.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
