@@ -32,7 +32,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/CFD.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.28/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["data/CFD.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.28/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1598,8 +1598,51 @@ and what the impact of those trends are on those who consume it.</p>
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
-<p>This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with “cessation of hostilities”. A ceasefire class of 2 represents a ceasefire with “cessation of hostilities with compliance mechanism(s)”. A ceasefire class of 3 represents a “definitive ceasefire”.This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires, with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. My graph illuminates the detrimental fact that humanitarian aid dissemination may not have as great of an impact of the permanent halt to geo-political violence as I thought it would.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with “cessation of hostilities”. A ceasefire class of 2 represents a ceasefire with “cessation of hostilities with compliance mechanism(s)”. A ceasefire class of 3 represents a “definitive ceasefire”.This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. My graph illuminates the detrimental fact that humanitarian aid dissemination may not have as great of an impact of the permanent halt to geo-political violence as I thought it would.</p>
+<h2 id="second-data-visualization">Second Data Visualization</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>peace_process</span> <span class='op'>&lt;-</span> <span class='va'>ceasefire</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span> <span class='op'>(</span><span class='va'>p_peaceprocess</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> </span>
+<span></span>
+<span><span class='va'>peace_process</span></span></code></pre>
+</div>
+<pre><code># A tibble: 2,970 × 87
+      cc cf_id uniq_id location  region  link ucdp_actor_id actor_name
+   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;     
+ 1    70     1   70001 Mexico         5     0            10 Governmen…
+ 2    70     2   70002 Mexico         5     0           767 EZLN      
+ 3    70     3   70003 Mexico         5     0           767 EZLN      
+ 4    70     4   70004 Mexico         5     1           767 EZLN      
+ 5    70     5   70005 Mexico         5     1           767 EZLN      
+ 6    70     6   70006 Mexico         5     1           767 EZLN      
+ 7    70     7   70007 Mexico         5     0            10 Governmen…
+ 8    90     1   90001 Guatemala      5     0           732 URNG      
+ 9    90     3   90003 Guatemala      5     0           732 URNG      
+10    90     4   90004 Guatemala      5     0           732 URNG      
+# ℹ 2,960 more rows
+# ℹ 79 more variables: ucdp_acd_id &lt;dbl&gt;, ucdp_dyad &lt;dbl&gt;,
+#   pax_id &lt;dbl&gt;, cf_dec_yr &lt;dbl&gt;, cf_dec_month &lt;dbl&gt;,
+#   cf_dec_day &lt;dbl&gt;, cf_effect_yr &lt;dbl&gt;, cf_effect_month &lt;dbl&gt;,
+#   cf_effect_day &lt;dbl&gt;, evidence_onset &lt;lgl&gt;, side &lt;dbl&gt;,
+#   partial &lt;dbl&gt;, written &lt;dbl&gt;, fixed &lt;dbl&gt;, fixed_time &lt;chr&gt;,
+#   nsa_frac &lt;dbl&gt;, p_humanitarian &lt;dbl&gt;, p_peaceprocess &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>peace_process</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ceasefire_class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"lightblue"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Ceasefire Class"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Count"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"Distribution of Ceasefire Classes Based on Peace Processes"</span>,</span>
+<span>       caption <span class='op'>=</span> <span class='st'>"Source: Journal of Conflict Resolution, 2022"</span></span>
+<span>       <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<p>This bar graph illustrates the relationship between the respective ceasefire classes and whether or not the purpose of the ceasefire was to advance peace. This purpose can look like reverting back to a previous agreement, making advances to halt war and/or violence, and additional movements toward peace for all the parties involved. Evidently, there seems to be more ceasefires that were called with peaceful intentions compared to humanitarian-specific intentions (as evidenced in my first bar graph). The vast amount of ceasefires called with a peaceful purpose resulted in a cessation of hostilities, rather than a complete end to the violence (a level three ceasefire). However, something that I find interesting is the potential for humanitarian aid distribution under the peaceful conditions that ceasefires are called for. This is not to conflate peace with humanitarianism, but peaceful intentions could set the foundation for potential humanitarian aid to be distributed.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
