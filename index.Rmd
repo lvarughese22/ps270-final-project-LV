@@ -46,5 +46,36 @@ ggplot(humanitarian_purpose, aes(x = ceasefire_class)) +
 
 This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with "cessation of hostilities". A ceasefire class of 2 represents a ceasefire with "cessation of hostilities with compliance mechanism(s)". A ceasefire class of 3 represents a "definitive ceasefire".This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. My graph illuminates the detrimental fact that humanitarian aid dissemination may not have as great of an impact of the permanent halt to geo-political violence as I thought it would. 
 
+## Data Visualization
+```{r}
+peace_process <- ceasefire |> 
+  filter (p_peaceprocess == 1)
+
+peace_process
+```
+
+
+
+
+## Second Data Visualization 
+
+```{r}
+ggplot(peace_process, aes(x = ceasefire_class)) +
+  geom_bar(fill = "lightblue") +
+  labs(x = "Ceasefire Class",
+       y = "Count",
+       title = "Distribution of Ceasefire Classes Based on Peace Processes",
+       caption = "Source: Journal of Conflict Resolution, 2022"
+       ) +
+  theme_minimal()
+```
+This bar graph illustrates the relationship between the respective ceasefire classes and whether or not the purpose of the ceasefire was to advance peace
+
+
+
+
+
+
+
 
 
