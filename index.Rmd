@@ -12,13 +12,12 @@ output:
 
 ## Introduction
   Our current sociopolitical moment is unfortunately shaped by global violence that permeates across borders, directly affecting communities who do not have the ability fight back or speak against violence without having their safety threatened. One of the most important resources that can help curb the negative effects of global violence is humanitarian aid. Organizations such as the Red Cross and the United Nations are devoted to distributing life saving aid to countries impacting by war and displacement, and have shown the impact of humanitiarianism all over the world. Beyond humanitarian aid, ceasefires are also an integral method to effectively stop violence from continuing. Ceasefires are described as temporary halts of violence that are meant to allow for the involved parties to be able to come together and discuss pathways towards peace and away from continued hostilities. Ceasefires can serve as symbolic signs of diplomacy and can help develop positive working relationships for nations as well. Most importantly though, both humanitarian aid and ceasefires foreground the people most impacted by global violence: the families, the children, who cannot speak up for themselves. Such processes become more than symbolic; sometimes they entail a life or death situation, and need to be discussed more within the geopolitical spaces.
-
   My research question I am interested in unpacking is: does the the dissemination of humanitarian aid impact the class of ceasefire administered? I plan to examine how the delivery of life-saving or relief-distribution aid impacts the depth of a ceasefire, which ranges from the cessation of hostilities to a definitive ceasefire. I hypothesize that, if humanitarian aid is the reason behind the call for a ceasefire, then the class of ceasefire would be one that demands the cessation of hostilities with compliance mechanism(s). During times of heightened conflict, I would imagine that it is in the best interest of most, if not all, the parties at-odds to ensure that their respective communities are safe and taken care of—which is why the distribution of humanitarian aid so important. However, because a socio-political tension has the ability to physically tear communities apart, I would not be surprised if even the spread of life saving resources weren't enough to demand a definitive ceasefire for all the parties involved. I believe that this is an important hypothesis to examine, because illustrating the impact that humanitarian aid has on halting civil conflict has the ability to inform social scientists regarding the depth of civil conflict in global communities. If the dissemination of life-saving aid is not enough for a full and total ceasefire to commence, then there are serious problems we must reckon with if we want to help reform our world for the better.
 
 ## Data  
-  The data set I will be using is the ETH/PRIO Civil Conflict Ceasefire Dataset from the Journal of Conflict Resolution, 2022. In order to measure and classify the ceasefires in this dataset, the researchers relied on a global news database, Factiva, which contains more than 1.8 billion news articles. Researchers then used a variety of search strings,specific keywords and topics that narrow the sources you can pull from, to focus on countries that have experienced at least one civil conflict between 1989-2020. Then, human coders went through these articles to identify for any ceasefire. If a ceasefire was identified, the coders took note various identification variables that help describe the purpose, location, and other important characteristics of the ceasefire.
-
-  My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for ceasefires without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as =2, then there might be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. 
+  The data set I will be using is the ETH/PRIO Civil Conflict Ceasefire Dataset from the Journal of Conflict Resolution, 2022. In order to measure and classify the ceasefires in this dataset, the researchers relied on a global news database, Factiva, which contains more than 1.8 billion news articles. Researchers then used a variety of search strings,specific keywords and topics that narrow the sources you can pull from, to focus on countries that have experienced at least one civil conflict between 1989-2020. Then, human coders went through these articles to identify for any ceasefire. If a ceasefire was identified, the coders took note various identification variables that help describe the purpose, location, and other important characteristics of the ceasefire. 
+  My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for ceasefires without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as =2, then there might be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. The research design in this data set would cross-sectional, because it shows the characteristics of a ceasefires each year. It wouldn't be before and after nor difference in differences because there is not a singular intervention that is the central focus of the study. Meaning that there is not a treatment or control group that could provide more room to analyze a specific variable that impacted ceasefires that the researchers implemented.
+  
   
   
 
@@ -29,6 +28,22 @@ library(tidyverse)
 ```{r}
 ceasefire <- read_csv("data/CFD.csv")
 ```
+
+```{r}
+ggplot(ceasefire, aes(x = ceasefire_class)) + 
+  geom_bar(fill = "lightgreen", color = "black") +
+  labs(title = "Distribution of Ceasefire Classes in Civil Conflict from 1989-2020",
+       x = "Ceasefire Class",
+       y = "Count",
+       caption = "Source: Journal of Conflict Resolution, 2022") +
+  theme_minimal()
+       
+  
+```
+
+
+
+
 
 ```{r}
 humanitarian_purpose <- ceasefire |> 
