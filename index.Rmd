@@ -9,14 +9,11 @@ output:
 
 
 
-## Project thoughts
 
-I am interested in exploring data related to Basketball, Football, Pop Culture, 
-and Television. Specifically, looking popular trends within each of these fields, 
-and what the impact of those trends are on those who consume it. 
+## Introduction
+  Our current sociopolitical moment is unfortunately shaped by global violence that permeates across borders, directly affecting communities who do not have the ability fight back or speak against violence without having their safety threatened. One of the most important resources that can help curb the negative effects of global violence is humanitarian aid. Organizations such as the Red Cross and the United Nations are devoted to distributing life saving aid to countries impacting by war and displacement, and have shown the impact of humanitiarianism all over the world. Beyond humanitarian aid, ceasefires are also an integral method to effectively stop violence from continuing. Ceasefires are described as temporary halts of violence that are meant to allow for the involved parties to be able to come together and discuss pathways towards peace and away from continued hostilities. Ceasefires can serve as symbolic signs of diplomacy and can help develop positive working relationships for nations as well. Most importantly though, both humanitarian aid and ceasefires foreground the people most impacted by global violence: the families, the children, who cannot speak up for themselves. Such processes become more than symbolic; sometimes they entail a life or death situation, and need to be discussed more within the sociopolitical realm.
 
-## Research Question 
-Does the the dissemination of humanitarian aid impact the class of ceasefire administered? I plan to examine how the delivery of life-saving or relief-distribution aid impacts the depth of a ceasefire, which ranges from the cessation of hostilities to a definitive ceasefire. I hypothesize that, if humanitarian aid is the reason behind the call for a ceasefire, then the class of ceasefire would be one that demands the cessation of hostilities with compliance mechanism(s). During times of heightened conflict, I would imagine that it is in the best interest of most, if not all, the parties at-odds to ensure that their respective communities are safe and taken care of—which is why the distribution of humanitarian aid so important. However, because a socio-political tension has the ability to physically tear communities apart, I would not be surprised if even the spread of life saving resources weren't enough to demand a definitive ceasefire for all the parties involved. My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for ceasefires without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as =2, then there might be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. If I observe greater ceasefires, associated with the cessation of hostilities with compliance mechanism(s), that are linked to ceasefires with the purpose of humanitarian aid—then my hypothesis would be supported. However, if there more definitive ceasefires linked to humanitarianism, then that would provide evidence against my hypothesis. 
+  My research question I am interested in unpacking is: does the the dissemination of humanitarian aid impact the class of ceasefire administered? I plan to examine how the delivery of life-saving or relief-distribution aid impacts the depth of a ceasefire, which ranges from the cessation of hostilities to a definitive ceasefire. I hypothesize that, if humanitarian aid is the reason behind the call for a ceasefire, then the class of ceasefire would be one that demands the cessation of hostilities with compliance mechanism(s). During times of heightened conflict, I would imagine that it is in the best interest of most, if not all, the parties at-odds to ensure that their respective communities are safe and taken care of—which is why the distribution of humanitarian aid so important. However, because a socio-political tension has the ability to physically tear communities apart, I would not be surprised if even the spread of life saving resources weren't enough to demand a definitive ceasefire for all the parties involved. My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for ceasefires without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as =2, then there might be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. If I observe greater ceasefires, associated with the cessation of hostilities with compliance mechanism(s), that are linked to ceasefires with the purpose of humanitarian aid—then my hypothesis would be supported. However, if there more definitive ceasefires linked to humanitarianism, then that would provide evidence against my hypothesis. 
 
 ## Data Visualization 
 
@@ -37,11 +34,14 @@ humanitarian_purpose
 
 
 ```{r}
-ggplot(humanitarian_purpose, aes(x = ceasefire_class)) +
+human_bar <- ggplot(humanitarian_purpose, aes(x = ceasefire_class)) +
   geom_bar(fill = "darkgreen") +
   labs(x = "Ceasefire Class",
        y = "Count",
-       title = "Ceasefires with a Humanitarian Purpose vs. Ceasefire Classification") 
+       title = "Ceasefires with a Humanitarian Purpose vs. Ceasefire Classification") + 
+  theme_minimal()
+
+human_bar
 ```
 
 This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with "cessation of hostilities". A ceasefire class of 2 represents a ceasefire with "cessation of hostilities with compliance mechanism(s)". A ceasefire class of 3 represents a "definitive ceasefire".This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. My graph illuminates the detrimental fact that humanitarian aid dissemination may not have as great of an impact of the permanent halt to geo-political violence as I thought it would. 
@@ -56,7 +56,7 @@ peace_process
 
 
 ```{r}
-ggplot(peace_process, aes(x = ceasefire_class)) +
+peace_bar <- ggplot(peace_process, aes(x = ceasefire_class)) +
   geom_bar(fill = "lightblue") +
   labs(x = "Ceasefire Class",
        y = "Count",
@@ -64,6 +64,8 @@ ggplot(peace_process, aes(x = ceasefire_class)) +
        caption = "Source: Journal of Conflict Resolution, 2022"
        ) +
   theme_minimal()
+
+peace_bar
 ```
 This bar graph illustrates the relationship between the respective ceasefire classes and whether or not the purpose of the ceasefire was to advance peace. This purpose can look like reverting back to a previous agreement, making advances to halt war and/or violence, and additional movements toward peace for all the parties involved. Evidently, there seems to be more ceasefires that were called with peaceful intentions compared to humanitarian-specific intentions (as shown in my first bar graph). The vast amount of ceasefires called with a peaceful purpose resulted in a cessation of hostilities, rather than a complete end to the violence (a level three ceasefire). However, something that I find interesting is the potential for humanitarian aid distribution under the peaceful conditions that ceasefires are called for.This is not to conflate peace with humanitarianism, but peaceful intentions could set the foundation for potential humanitarian aid to be distributed. 
 
