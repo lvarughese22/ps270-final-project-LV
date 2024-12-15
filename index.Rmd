@@ -46,6 +46,8 @@ ggplot(ceasefire, aes(x = ceasefire_class)) +
 
 ## Results
 
+First, we want to filter the data to only focus on ceasefires that were
+called for humanitarian purposes.
 ```{r}
 humanitarian_purpose <- ceasefire |> 
   filter (p_humanitarian == 1)
@@ -54,6 +56,7 @@ humanitarian_purpose
 ```
 
 
+Now that we only have ceasefires called with humanitarian purposes, we can then visualize its relationship to the specific classes of ceasefires — the main analysis.
 ```{r}
 human_bar <- ggplot(humanitarian_purpose, aes(x = ceasefire_class)) +
   geom_bar(fill = "darkolivegreen1", color = "black") +
@@ -64,9 +67,11 @@ human_bar <- ggplot(humanitarian_purpose, aes(x = ceasefire_class)) +
 
 human_bar
 ```
+My primary focus for this analysis was on the `p_humanitarian` variable's relationship with the speciifc classifications of ceasefires within the data set. This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with "cessation of hostilities". A ceasefire class of 2 represents a ceasefire with "cessation of hostilities with compliance mechanism(s)". A ceasefire class of 3 represents a "definitive ceasefire".This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. My graph illuminates the detrimental fact that humanitarian aid dissemination may not have as great of an impact of the permanent halt to geo-political violence as I thought it would. 
 
-This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with "cessation of hostilities". A ceasefire class of 2 represents a ceasefire with "cessation of hostilities with compliance mechanism(s)". A ceasefire class of 3 represents a "definitive ceasefire".This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. My graph illuminates the detrimental fact that humanitarian aid dissemination may not have as great of an impact of the permanent halt to geo-political violence as I thought it would. 
 
+
+I am going to do the same thing, but this time with another variable in the dataset: `p_peaceprocess`.
 ```{r}
 peace_process <- ceasefire |> 
   filter (p_peaceprocess == 1) 
@@ -87,12 +92,13 @@ peace_bar <- ggplot(peace_process, aes(x = ceasefire_class)) +
 
 peace_bar
 ```
-This bar graph illustrates the relationship between the respective ceasefire classes and whether or not the purpose of the ceasefire was to advance peace. This purpose can look like reverting back to a previous agreement, making advances to halt war and/or violence, and additional movements toward peace for all the parties involved. Evidently, there seems to be more ceasefires that were called with peaceful intentions compared to humanitarian-specific intentions (as shown in my first bar graph). The vast amount of ceasefires called with a peaceful purpose resulted in a cessation of hostilities, rather than a complete end to the violence (a level three ceasefire). However, something that I find interesting is the potential for humanitarian aid distribution under the peaceful conditions that ceasefires are called for.This is not to conflate peace with humanitarianism, but peaceful intentions could set the foundation for potential humanitarian aid to be distributed. 
+Something that I realized while parsing through this data was the possibility for confounding variables. One of which was the `p_peaceprocess` variable which denotes ceasefires called specifically for thesake of dismantling the status of war, signaling desire for dialogue and/or peace, or re-committing to an earlier agreement. This bar graph illustrates the relationship between the respective ceasefire classes and whether or not the purpose of the ceasefire was to advance peace. This purpose can look like reverting back to a previous agreement, making advances to halt war and/or violence, and additional movements toward peace for all the parties involved. Evidently, there seems to be more ceasefires that were called with peaceful intentions compared to humanitarian-specific intentions (as shown in my first bar graph). The vast amount of ceasefires called with a peaceful purpose resulted in a cessation of hostilities, rather than a complete end to the violence (a level three ceasefire). However, something that I find interesting is the potential for humanitarian aid distribution under the peaceful conditions that ceasefires are called for.This is not to conflate peace with humanitarianism, but peaceful intentions could set the foundation for potential humanitarian aid to be distributed. 
 
 
 
 
 
+Let's interpret the stastical significance of both the main coefficient of interest (`p_humanitarian`) as well as `p_peaceprocess`.
 ```{r}
 library(modelsummary)
 library(broom)
@@ -104,16 +110,6 @@ tidy(lin_reg) |>
 ```
 
 
-```{r}
-
-var_labels <- c(
-  "p_humanitarian" = "Humanitarian Purpose",
-  "p_peaceprocess" = "Peace Process")
-
-modelsummary::modelsummary(
-  list(lin_reg),
-  coef_map = var_labels)
-```
 
 
 
