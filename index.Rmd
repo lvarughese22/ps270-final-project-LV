@@ -18,7 +18,9 @@ output:
   The data set I will be using is the ETH/PRIO Civil Conflict Ceasefire Dataset from the Journal of Conflict Resolution, 2022. In order to measure and classify the ceasefires in this dataset, the researchers relied on a global news database, Factiva, which contains more than 1.8 billion news articles. Researchers then used a variety of search strings,specific keywords and topics that narrow the sources you can pull from, to focus on countries that have experienced at least one civil conflict between 1989-2020. Then, human coders went through these articles to identify for any ceasefire. If a ceasefire was identified, the coders took note various identification variables that help describe the purpose, location, and other important characteristics of the ceasefire. 
   My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for ceasefires without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as =2, then there might be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. The research design in this data set would cross-sectional, because it shows the characteristics of a ceasefires each year. It wouldn't be before and after nor difference in differences because there is not a singular intervention that is the central focus of the study. Meaning that there is not a treatment or control group that could provide more room to analyze a specific variable that impacted ceasefires that the researchers implemented.
   
-  
+
+
+First, let's load the necessary packages and dataset into R.  
 
 ```{r}
 library(tidyverse)
@@ -27,6 +29,12 @@ library(tidyverse)
 ```{r}
 ceasefire <- read_csv("data/CFD.csv")
 ```
+
+
+Then, I am going to visualize this dependent variable, `ceasefire_class`, using a bar graph.
+
+
+
 
 ```{r}
 ggplot(ceasefire, aes(x = ceasefire_class)) + 
@@ -46,8 +54,10 @@ ggplot(ceasefire, aes(x = ceasefire_class)) +
 
 ## Results
 
-First, we want to filter the data to only focus on ceasefires that were
-called for humanitarian purposes.
+First, we want to filter the data to only focus on ceasefires that were called for humanitarian purposes.
+
+
+
 ```{r}
 humanitarian_purpose <- ceasefire |> 
   filter (p_humanitarian == 1)
@@ -57,6 +67,10 @@ humanitarian_purpose
 
 
 Now that we only have ceasefires called with humanitarian purposes, we can then visualize its relationship to the specific classes of ceasefires — the main analysis.
+
+
+
+
 ```{r}
 human_bar <- ggplot(humanitarian_purpose, aes(x = ceasefire_class)) +
   geom_bar(fill = "darkolivegreen1", color = "black") +
@@ -72,6 +86,10 @@ My primary focus for this analysis was on the `p_humanitarian` variable's relati
 
 
 I am going to do the same thing, but this time with another variable in the dataset: `p_peaceprocess`.
+
+
+
+
 ```{r}
 peace_process <- ceasefire |> 
   filter (p_peaceprocess == 1) 
@@ -99,6 +117,11 @@ Something that I realized while parsing through this data was the possibility fo
 
 
 Let's interpret the stastical significance of both the main coefficient of interest (`p_humanitarian`) as well as `p_peaceprocess`.
+
+
+
+
+
 ```{r}
 library(modelsummary)
 library(broom)
