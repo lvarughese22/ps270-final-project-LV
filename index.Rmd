@@ -19,7 +19,6 @@ output:
   My sample is comprised of all ceasefires in civil conflict between 1989 and 2023, including multilateral, bilateral, and unilateral agreements. The explanatory variable of interest is whether ceasefire had a humanitarian purpose. The variable is coded =1 for a with humanitarian purpose and =0 for ceasefires without humanitarian purpose. The outcome variable in this instance would be the class of ceasefire administered. The variable is coded =1 for a cessation of hostilities, =2 for cessation of hostilities with mechanism(s), and =3 for a definitive ceasefire. For example, if a ceasefire was classified as =2, then there might be a temporary halt of violence, but nothing that indicates progress towards peace nor restoration for any of the parties involved. The research design in this data set would cross-sectional, because it shows the characteristics of a ceasefires each year. It wouldn't be before and after nor difference in differences because there is not a singular intervention that is the central focus of the study. Meaning that there is not a treatment or control group that could provide more room to analyze a specific variable that impacted ceasefires that the researchers implemented.
   
   
-  
 
 ```{r}
 library(tidyverse)
@@ -45,6 +44,8 @@ ggplot(ceasefire, aes(x = ceasefire_class)) +
 
 
 
+## Results
+
 ```{r}
 humanitarian_purpose <- ceasefire |> 
   filter (p_humanitarian == 1)
@@ -55,7 +56,7 @@ humanitarian_purpose
 
 ```{r}
 human_bar <- ggplot(humanitarian_purpose, aes(x = ceasefire_class)) +
-  geom_bar(fill = "darkgreen") +
+  geom_bar(fill = "darkolivegreen1", color = "black") +
   labs(x = "Ceasefire Class",
        y = "Count",
        title = "Ceasefires with a Humanitarian Purpose vs. Ceasefire Classification") + 
@@ -66,7 +67,6 @@ human_bar
 
 This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with "cessation of hostilities". A ceasefire class of 2 represents a ceasefire with "cessation of hostilities with compliance mechanism(s)". A ceasefire class of 3 represents a "definitive ceasefire".This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. My graph illuminates the detrimental fact that humanitarian aid dissemination may not have as great of an impact of the permanent halt to geo-political violence as I thought it would. 
 
-## Second Data Visualization
 ```{r}
 peace_process <- ceasefire |> 
   filter (p_peaceprocess == 1) 
@@ -77,7 +77,7 @@ peace_process
 
 ```{r}
 peace_bar <- ggplot(peace_process, aes(x = ceasefire_class)) +
-  geom_bar(fill = "lightblue") +
+  geom_bar(fill = "darkolivegreen4", color = "black") +
   labs(x = "Ceasefire Class",
        y = "Count",
        title = "Distribution of Ceasefire Classes Based on Peace Processes",
@@ -91,6 +91,29 @@ This bar graph illustrates the relationship between the respective ceasefire cla
 
 
 
+
+
+```{r}
+library(modelsummary)
+library(broom)
+lin_reg <- lm(ceasefire_class ~ p_humanitarian + p_peaceprocess, data = ceasefire)
+
+tidy(lin_reg) |>
+  knitr::kable(digits = 3)
+
+```
+
+
+```{r}
+
+var_labels <- c(
+  "p_humanitarian" = "Humanitarian Purpose",
+  "p_peaceprocess" = "Peace Process")
+
+modelsummary::modelsummary(
+  list(lin_reg),
+  coef_map = var_labels)
+```
 
 
 
