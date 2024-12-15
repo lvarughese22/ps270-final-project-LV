@@ -90,7 +90,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>PS270 Final Project</title>
 
-  <meta property="description" itemprop="description" content="My final project"/>
+  <meta property="description" itemprop="description" content="Analyzing global ceasefires and their determinants"/>
 
 
   <meta name="article:author" content="Landis Varughese"/>
@@ -98,19 +98,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="PS270 Final Project"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="My final project"/>
+  <meta property="og:description" content="Analyzing global ceasefires and their determinants"/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="PS270 Final Project"/>
-  <meta property="twitter:description" content="My final project"/>
+  <meta property="twitter:description" content="Analyzing global ceasefires and their determinants"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output"]}},"value":[{"type":"character","attributes":{},"value":["PS270 Final Project"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Landis Varughese"]}]}]},{"type":"character","attributes":{},"value":["My final project"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output"]}},"value":[{"type":"character","attributes":{},"value":["PS270 Final Project"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Landis Varughese"]}]}]},{"type":"character","attributes":{},"value":["Analyzing global ceasefires and their determinants"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1518,7 +1518,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"PS270 Final Project","description":"My final project","authors":[{"author":"Landis Varughese","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}]}
+{"title":"PS270 Final Project","description":"Analyzing global ceasefires and their determinants","authors":[{"author":"Landis Varughese","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1532,7 +1532,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p>My final project</p>
+<p>Analyzing global ceasefires and their determinants</p>
 </div>
 
 <div class="d-byline">
@@ -1617,7 +1617,7 @@ My sample is comprised of all ceasefires in civil conflict between 1989 and 2023
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
 </div>
-<p>My primary focus for this analysis was on the <code>p_humanitarian</code> variable’s relationship with the speciifc classifications of ceasefires within the data set. This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with “cessation of hostilities”. A ceasefire class of 2 represents a ceasefire with “cessation of hostilities with compliance mechanism(s)”. A ceasefire class of 3 represents a “definitive ceasefire”.This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. My graph illuminates the detrimental fact that humanitarian aid dissemination may not have as great of an impact of the permanent halt to geo-political violence as I thought it would.</p>
+<p>My primary focus for this analysis was on the <code>p_humanitarian</code> variable’s relationship with the speciifc classifications of ceasefires within the data set. This bar graph illustrates the relationship between ceasefires with humanitarian purposes and their respective ceasefire classification. A ceasefire class of 1 represents a ceasefire with “cessation of hostilities”. A ceasefire class of 2 represents a ceasefire with “cessation of hostilities with compliance mechanism(s)”. A ceasefire class of 3 represents a “definitive ceasefire”.This data visualization does not completely align with my hypothesis, because there is an overwhelming majority of ceasefires with a class of 1 that were called with a humanitarian purpose. I thought that there would be more ceasefires with a class of 2 called with a humanitarian purpose, but I was clearly mistaken. My graph illuminates the detrimental fact that humanitarian aid dissemination may not have as great of an impact on the permanent halt to geo-political violence as I thought it would.</p>
 <p>I am going to do the same thing, but this time with another variable in the dataset: <code>p_peaceprocess</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1708,6 +1708,10 @@ My sample is comprised of all ceasefires in civil conflict between 1989 and 2023
 </tbody>
 </table>
 </div>
+<p>The coefficient for <code>p_humanitarian</code> is -.044, which means that when there is a humanitarian purpose behind a ceasefire, the expected classification of the ceasefire decreases by .044 units. This means that ceasefires with a humanitarian purpose are more likely to be associated with a lower ceasefire class (closer to a level 1 which is “Cessation of Hostilities”) rather than a cessation of hostilities with compliance mechanisms or a definitive ceasefire (levels 2 and 3, respectively). The p-value for <code>p_humanitarian</code> is .098, which, assuming the alpha is 0.05, means that we do not reject the null hypothesis. <code>p_humanitarian</code> is not statistically significant when the alpha is 0.05, meaning that there is not sufficient evidence for me to conclude a causual effect between this variable and the depth of a ceasefire called.</p>
+<p>The coefficient for <code>p_peaceprocess</code> is .460, which means that when a peace process was present during the call for a ceasefire, the expected classification of a ceasefire increases by .460 units. This suggests that ceasefires called with an intention to further the peacemaking process are more likely to be associated with a higher level ceasefire class (levels 2 or 3). The p-value for <code>p_peaceprocess</code> was 0, which is highly statistically significant. The peace process is an important factor in the depth of a ceasefire is called, which leads me to to believe there is grounds for establishing a causal relationship between the two variables.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Based on both the bar plots and regression table that I made, I conclude that there is not a strong causal relationship between the level of ceasefire that is called and its humanitarian intentions. In the second bar plot that I created, I learned that there were not that many ceasefires with compliance mechanisms (level 2) or definitive ceasefires (level 3) called with humanitarian purposes, compared to the vast majority of ceasefires with humanitarian purposes classified as “cessation of hostilities”. Given these results, I didn’t find much support for my hypothesis, as I predicted that there would be a majority of class 2 ceasefires called with humanitarian intentions, which just wasn’t the case. Some limitations to my analysis would be the the prescence of confounders, such as the variable <code>p_peaceprocess</code> which I actually visualized in some ways. I think variables such as <code>p_peaceprocess</code> could serve as a confounder, because negotiating a path towards peace could impact whether or not humanitarian aid get’s distributed in the first place. It would be difficult to disseminate aid in a place that is still simmering with conflict, with serious worries about the aid reaching the people who need it the most. While humanitarian aid may not have been the documented intention, under peaceful engagement with a ceasefire, there may be a future where that integral aid is able to reach people safely. If I had more resources to improve my analysis, I would improve my analysis by interviewing people impacted by various classes of ceasefires to understand the conditions before and after a ceasefire is called. I think it would be really meaningful to understand where political leaders draw the line and stop the violence from pursuing. Being able to interview people directly impacted by conflict, and in turn ceasefires, would bring an important perspective to my analysis when understanding the necessity of both humanitarian aid and peace processes when advocating against violent global conflict.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
