@@ -131,9 +131,10 @@ tidy(lin_reg) |>
   knitr::kable(digits = 3)
 
 ```
+The coefficient for `p_humanitarian` is -.044, which means that when there is a humanitarian purpose behind a ceasefire, the expected classification of the ceasefire decreases by .044 units. This means that ceasefires with a humanitarian purpose are more likely to be associated with a lower ceasefire class (closer to a level 1 which is "Cessation of Hostilities") rather than a cessation of hostilities with compliance mechanisms or a definitive ceasefire (levels 2 and 3, respectively). The p-value for `p_humanitarian` is .098, which, assuming the alpha is 0.05, means that we do not reject the null hypothesis. `p_humanitarian` is not statistically significant when the alpha is 0.05, meaning that there is not sufficient evidence for me to conclude a causual effect between this variable and the depth of a ceasefire called.
 
 
-
+The coefficient for `p_peaceprocess` is .460, which means that when a peace process was present during the call for a ceasefire, the expected classification of a ceasefire increases by .460 units. This suggests that ceasefires called with an intention to further the peacemaking process are more likely to be associated with a higher level ceasefire class (levels 2 or 3). The p-value for `p_peaceprocess` was 0, which is highly statistically significant. The peace process is an important factor in the depth of a ceasefire is called, which leads me to to believe there is grounds for establishing a causal relationship between the two variables.
 
 
 
