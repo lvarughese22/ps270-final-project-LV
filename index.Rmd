@@ -131,13 +131,18 @@ tidy(lin_reg) |>
   knitr::kable(digits = 3)
 
 ```
+
+
 The coefficient for `p_humanitarian` is -.044, which means that when there is a humanitarian purpose behind a ceasefire, the expected classification of the ceasefire decreases by .044 units. This means that ceasefires with a humanitarian purpose are more likely to be associated with a lower ceasefire class (closer to a level 1 which is "Cessation of Hostilities") rather than a cessation of hostilities with compliance mechanisms or a definitive ceasefire (levels 2 and 3, respectively). The p-value for `p_humanitarian` is .098, which, assuming the alpha is 0.05, means that we do not reject the null hypothesis. `p_humanitarian` is not statistically significant when the alpha is 0.05, meaning that there is not sufficient evidence for me to conclude a causual effect between this variable and the depth of a ceasefire called.
 
 
 The coefficient for `p_peaceprocess` is .460, which means that when a peace process was present during the call for a ceasefire, the expected classification of a ceasefire increases by .460 units. This suggests that ceasefires called with an intention to further the peacemaking process are more likely to be associated with a higher level ceasefire class (levels 2 or 3). The p-value for `p_peaceprocess` was 0, which is highly statistically significant. The peace process is an important factor in the depth of a ceasefire is called, which leads me to to believe there is grounds for establishing a causal relationship between the two variables.
 
 
+## Conclusion
 
+
+Based on both the bar plots and regression table that I made, I conclude that there is not a strong causal relationship between the level of ceasefire that is called and its humanitarian intentions. In the second bar plot that I created, I learned that there were not that many ceasefires with compliance mechanisms (level 2) or definitive ceasefires (level 3) called with humanitarian purposes, compared to the vast majority of ceasefires with humanitarian purposes classified as "cessation of hostilities". Given these results, I didn't find much support for my hypothesis, as I predicted that there would be a majority of class 2 ceasefires called with humanitarian intentions, which just wasn't the case. Some limitations to my analysis would be the the prescence of confounders, such as the variable `p_peaceprocess` which I actually visualized in some ways. I think variables such as `p_peaceprocess` could serve as a confounder, because negotiating a path towards peace could impact whether or not humanitarian aid get's distributed in the first place. It would be difficult to disseminate aid in a place that is still simmering with conflict, with serious worries about the aid reaching the people who need it the most. While humanitarian aid may not have been the documented intention, under peaceful engagement with a ceasefire, there may be a future where that integral aid is able to reach people safely. If I had more resources to improve my analysis, I would improve my analysis by interviewing people impacted by various classes of ceasefires to understand the conditions before and after a ceasefire is called. I think it would be really meaningful to understand where political leaders draw the line and stop the violence from pursuing. Being able to interview people directly impacted by conflict, and in turn ceasefires, would bring an important persepctive to my analysis when understanding the necessity of both humanitarian aid and peace processes when advocating against violent global conflict.
 
 
 
